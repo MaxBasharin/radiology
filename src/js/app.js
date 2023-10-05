@@ -66,6 +66,19 @@ isWebp();
 // togglePopupWindows()
 // =======================================================================================================
 
+const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+		observer.observe();
+		// Initialize library
+		lozad('.lozad', {
+				load: function(el) {
+						el.src = el.dataset.src;
+						el.onload = function() {
+								el.classList.add('fade')
+						}
+				}
+		}).observe()
+
+
 $('.diplom__slider').slick({
   infinite: true,
   autoplay: true,
@@ -151,17 +164,6 @@ $('.reviews__slider').slick({
     }
   ]
 });
-
-// $('.teachers__slider').slick({
-//   dots: false,
-//   arrows: false,
-//   autoplay: true,
-//   autoplaySpeed: 2000,
-//   infinite: true,
-//   speed: 1000,
-//   fade: true,
-//   cssEase: 'linear'
-// });
 
 $('.marquee__one').marquee({
   duration: 10000,
